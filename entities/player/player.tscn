@@ -1,0 +1,88 @@
+[gd_scene load_steps=12 format=3 uid="uid://5v8efjibned1"]
+
+[ext_resource type="Script" uid="uid://cq8b2u8825wq8" path="res://entities/player/player.gd" id="1_bls4j"]
+[ext_resource type="SpriteFrames" uid="uid://bscopvd58hdea" path="res://assets/entities/player/top_arm_frames.tres" id="2_8fjmc"]
+[ext_resource type="SpriteFrames" uid="uid://dncqqcxnukm4i" path="res://assets/entities/player/player_frames.tres" id="2_fkugw"]
+[ext_resource type="Script" uid="uid://cu226u12attnv" path="res://entities/player/player_sprite.gd" id="3_8fjmc"]
+[ext_resource type="Script" uid="uid://cxpn01o7ni8ud" path="res://entities/components/sprite_shadow/sprite_shadow.gd" id="4_qiwj3"]
+[ext_resource type="Texture2D" uid="uid://cxraf0n7qk3dh" path="res://assets/entities/player/chell_spritesheet.tres" id="7_bectd"]
+[ext_resource type="Script" uid="uid://c5eyx3y7v05ul" path="res://entities/player/top_sprite.gd" id="7_qiwj3"]
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_bls4j"]
+cull_mode = 2
+polygon = PackedVector2Array(3, -6, 4, -5, 5, -5, 5, -1.96449, 4, -1, 4, 1, 2, 2, 3, 3, 3, 17, -3, 17, -3, 3, -4, 2, -5, 3, -6, 3, -6, -5, -5, -6)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xywjk"]
+atlas = ExtResource("7_bectd")
+region = Rect2(0, 128, 16, 32)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_bls4j"]
+radius = 5.0
+height = 22.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bls4j"]
+size = Vector2(10, 22)
+
+[node name="player" type="CharacterBody2D" groups=["player"]]
+up_direction = Vector2(0, 1)
+script = ExtResource("1_bls4j")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+occluder = SubResource("OccluderPolygon2D_bls4j")
+
+[node name="attach_point" type="Marker2D" parent="." groups=["attach_point"]]
+z_index = 1
+position = Vector2(-1, 6)
+metadata/flip_h = false
+
+[node name="sprite" type="AnimatedSprite2D" parent="."]
+sprite_frames = ExtResource("2_fkugw")
+animation = &"jump"
+script = ExtResource("3_8fjmc")
+
+[node name="shadow" type="Node2D" parent="sprite"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-8, -16)
+script = ExtResource("4_qiwj3")
+
+[node name="shadow_sprite" type="TextureRect" parent="sprite/shadow"]
+modulate = Color(0, 0, 0, 0.5)
+z_index = -1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -1.0
+offset_top = 1.0
+offset_right = 15.0
+offset_bottom = 33.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(-4, -7)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = SubResource("AtlasTexture_xywjk")
+
+[node name="arm_sprite" type="AnimatedSprite2D" parent="sprite"]
+visible = false
+z_index = 2
+sprite_frames = ExtResource("2_8fjmc")
+animation = &"hold"
+script = ExtResource("7_qiwj3")
+
+[node name="physics_collider_shape" type="CollisionShape2D" parent="."]
+position = Vector2(0, 5)
+shape = SubResource("CapsuleShape2D_bls4j")
+
+[node name="object_collider" type="Area2D" parent="."]
+
+[node name="object_collider_shape" type="CollisionShape2D" parent="object_collider"]
+position = Vector2(0, 5)
+shape = SubResource("RectangleShape2D_bls4j")
+
+[connection signal="animation_changed" from="sprite" to="sprite" method="_on_animation_changed"]
+[connection signal="animation_changed" from="sprite" to="sprite/shadow" method="_on_sprite_animation_changed"]
+[connection signal="frame_changed" from="sprite" to="." method="_on_sprite_frame_changed"]
+[connection signal="frame_changed" from="sprite" to="sprite" method="_on_frame_changed"]
+[connection signal="frame_changed" from="sprite" to="sprite/shadow" method="_on_sprite_frame_changed"]

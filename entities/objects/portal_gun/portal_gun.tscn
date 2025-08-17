@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://dqw8yr62koqt1"]
+
+[ext_resource type="SpriteFrames" uid="uid://dr3ithmi5ixiq" path="res://assets/entities/objects/portal_gun/portal_gun_frames.tres" id="1_clx8n"]
+[ext_resource type="Script" uid="uid://bqhbpdhmqrkvn" path="res://entities/objects/portal_gun/portal_gun.gd" id="1_gbd00"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gbd00"]
+size = Vector2(12, 4)
+
+[node name="portal_gun" type="RigidBody2D" groups=["pickupable"]]
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("1_gbd00")
+
+[node name="sprite" type="AnimatedSprite2D" parent="."]
+sprite_frames = ExtResource("1_clx8n")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_gbd00")
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+target_position = Vector2(500, 0)
+collision_mask = 16
+collide_with_areas = true
+
+[node name="Line2D" type="Line2D" parent="."]
+visible = false
+points = PackedVector2Array(0, 0, 136, 0)
+width = 2.0

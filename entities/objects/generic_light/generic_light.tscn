@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://dx6w5g6ajrs2p"]
+
+[ext_resource type="Script" uid="uid://bem63nvv64wl" path="res://entities/objects/generic_light/generic_light.gd" id="1_qdeuq"]
+[ext_resource type="Texture2D" uid="uid://c8w0bbntg402w" path="res://assets/entities/lights/light_64.png" id="2_1xkgk"]
+
+[node name="PointLight2D" type="PointLight2D"]
+z_index = 19
+energy = 4.0
+range_item_cull_mask = 529
+shadow_enabled = true
+shadow_item_cull_mask = 529
+texture = ExtResource("2_1xkgk")
+height = 32.0
+script = ExtResource("1_qdeuq")

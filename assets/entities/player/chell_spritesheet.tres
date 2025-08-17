@@ -1,0 +1,8 @@
+[gd_resource type="CanvasTexture" load_steps=3 format=3 uid="uid://cxraf0n7qk3dh"]
+
+[ext_resource type="Texture2D" uid="uid://f2ijukyxxtrc" path="res://assets/entities/player/chell_spritesheet.aseprite" id="1_yc2gp"]
+[ext_resource type="Texture2D" uid="uid://ccoqfwa60r1bv" path="res://assets/entities/player/chell_spritesheet_n.png" id="2_erc0t"]
+
+[resource]
+diffuse_texture = ExtResource("1_yc2gp")
+normal_texture = ExtResource("2_erc0t")

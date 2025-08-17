@@ -1,0 +1,45 @@
+[gd_scene load_steps=5 format=3 uid="uid://c64wts63xvop6"]
+
+[ext_resource type="Texture2D" uid="uid://xncqyonom73g" path="res://assets/entities/objects/generic_core/core.aseprite" id="1_1pgxy"]
+[ext_resource type="Script" uid="uid://ku3wy7m3ebhi" path="res://entities/objects/generic_core/core.gd" id="1_y62jd"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_nt34b"]
+radius = 6.49999
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_1pgxy"]
+b = Vector2(-8, 0)
+
+[node name="core" type="Node2D"]
+
+[node name="PinJoint2D" type="PinJoint2D" parent="."]
+position = Vector2(-4, -4)
+node_a = NodePath("../core")
+node_b = NodePath("../handle")
+
+[node name="core" type="RigidBody2D" parent="."]
+disable_mode = 1
+mass = 100.0
+gravity_scale = 0.0
+center_of_mass_mode = 1
+inertia = 1000.0
+script = ExtResource("1_y62jd")
+
+[node name="Sprite2D" type="Sprite2D" parent="core"]
+texture = ExtResource("1_1pgxy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="core"]
+shape = SubResource("CircleShape2D_nt34b")
+
+[node name="handle" type="RigidBody2D" parent="."]
+position = Vector2(-4, -4)
+mass = 0.001
+gravity_scale = 0.0
+inertia = 25.87
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="handle"]
+shape = SubResource("SegmentShape2D_1pgxy")
+
+[node name="ColorRect" type="ColorRect" parent="handle"]
+offset_left = -8.0
+offset_top = -1.0
+offset_bottom = 1.0

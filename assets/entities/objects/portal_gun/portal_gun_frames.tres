@@ -1,0 +1,18 @@
+[gd_resource type="SpriteFrames" load_steps=3 format=3 uid="uid://dr3ithmi5ixiq"]
+
+[ext_resource type="Texture2D" uid="uid://c1xb05rm25sfl" path="res://assets/entities/objects/portal_gun/portal_gun.aseprite" id="1_f23m5"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ca88v"]
+atlas = ExtResource("1_f23m5")
+region = Rect2(0, 0, 16, 16)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ca88v")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
