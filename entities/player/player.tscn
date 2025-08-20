@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://5v8efjibned1"]
+[gd_scene load_steps=13 format=3 uid="uid://5v8efjibned1"]
 
 [ext_resource type="Script" uid="uid://cq8b2u8825wq8" path="res://entities/player/player.gd" id="1_bls4j"]
 [ext_resource type="SpriteFrames" uid="uid://bscopvd58hdea" path="res://assets/entities/player/top_arm_frames.tres" id="2_8fjmc"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://cxpn01o7ni8ud" path="res://entities/components/sprite_shadow/sprite_shadow.gd" id="4_qiwj3"]
 [ext_resource type="Texture2D" uid="uid://cxraf0n7qk3dh" path="res://assets/entities/player/chell_spritesheet.tres" id="7_bectd"]
 [ext_resource type="Script" uid="uid://c5eyx3y7v05ul" path="res://entities/player/top_sprite.gd" id="7_qiwj3"]
+[ext_resource type="Script" uid="uid://c8jptvjlectwl" path="res://entities/objects/portal_handler/portal_traveller.gd" id="8_26q78"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_bls4j"]
 cull_mode = 2
@@ -24,6 +25,8 @@ height = 22.0
 size = Vector2(10, 22)
 
 [node name="player" type="CharacterBody2D" groups=["player"]]
+collision_layer = 385
+collision_mask = 257
 up_direction = Vector2(0, 1)
 script = ExtResource("1_bls4j")
 
@@ -48,6 +51,7 @@ script = ExtResource("4_qiwj3")
 [node name="shadow_sprite" type="TextureRect" parent="sprite/shadow"]
 modulate = Color(0, 0, 0, 0.5)
 z_index = -1
+clip_contents = true
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -80,6 +84,10 @@ shape = SubResource("CapsuleShape2D_bls4j")
 [node name="object_collider_shape" type="CollisionShape2D" parent="object_collider"]
 position = Vector2(0, 5)
 shape = SubResource("RectangleShape2D_bls4j")
+
+[node name="portal_traveller" type="Node2D" parent="."]
+script = ExtResource("8_26q78")
+sprite_node = NodePath("../sprite")
 
 [connection signal="animation_changed" from="sprite" to="sprite" method="_on_animation_changed"]
 [connection signal="animation_changed" from="sprite" to="sprite/shadow" method="_on_sprite_animation_changed"]

@@ -26,14 +26,8 @@ func _process(_delta):
 		#modulate = Color(0.0,0.0,0.0,opacity)
 		#position = offset
 		#texture = sprite.sprite_frames.get_frame_texture(sprite.animation, sprite.frame)
-	
 	texture_rect.flip_h = sprite.flip_h
 	texture_rect.flip_v = sprite.flip_v
-	
-
-func _on_sprite_animation_changed() -> void:
-	assert (sprite is AnimatedSprite2D)
-	print("anim")
 
 
 func _on_sprite_frame_changed() -> void:

@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=4 uid="uid://fc3fm4tbbmse"]
+[gd_scene load_steps=29 format=4 uid="uid://fc3fm4tbbmse"]
 
 [ext_resource type="Script" uid="uid://cil421frdnja3" path="res://scenes/levels/level_01/level_01.gd" id="1_3b8aa"]
 [ext_resource type="Texture2D" uid="uid://wkh0400lfhhy" path="res://assets/entities/objects/level_card/level_card.png" id="1_7f7yp"]
@@ -18,6 +18,7 @@
 [ext_resource type="Texture2D" uid="uid://ve47qcg3unn7" path="res://assets/entities/lights/light_512.png" id="14_3b8aa"]
 [ext_resource type="PackedScene" uid="uid://dqw8yr62koqt1" path="res://entities/objects/portal_gun/portal_gun.tscn" id="14_wo1oe"]
 [ext_resource type="Script" uid="uid://bp2v2rhvpp5g" path="res://entities/objects/portal_handler/portal_handler.gd" id="19_cwr5l"]
+[ext_resource type="PackedScene" uid="uid://cvhyf6hwnha4i" path="res://entities/objects/generic_portal/generic_portal.tscn" id="19_jnghj"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_cwr5l"]
 texture = ExtResource("9_wo1oe")
@@ -168,7 +169,6 @@ axis_stretch_vertical = 1
 [node name="level" type="Node2D" parent="."]
 unique_name_in_owner = true
 z_as_relative = false
-scale = Vector2(0.5, 0.5)
 
 [node name="spawn_point" type="Marker2D" parent="level"]
 unique_name_in_owner = true
@@ -210,7 +210,7 @@ z_index = 22
 
 [node name="foreground_0" type="TileMapLayer" parent="level/tilemaps/foreground" groups=["tilemap_dither_shadows"]]
 material = SubResource("ShaderMaterial_7f7yp")
-tile_map_data = PackedByteArray("AAAAAAwAAAAAAAIAAAABAAwAAAAAAAIAAAACAAwAAAAAAAIAAAADAAwAAAAAAAIAAAAEAAwAAAAAAAIAAAAFAAwAAAAAAAIAAAAGAAwAAAAAAAIAAAAHAAwAAAAAAAIAAAAIAAwAAAAAAAIAAAAJAAwAAAAAAAIAAAAKAAwAAAAAAAIAAAALAAwAAAAAAAIAAAAMAAwAAAAAAAIAAAANAAwAAAAAAAIAAAAOAAwAAAAAAAIAAAAPAAwAAAAAAAIAAAAQAAwAAAAAAAIAAAAeAAwAAAAAAAIAAAAfAAwAAAAAAAIAAAAgAAwAAAAAAAIAAAAhAAwAAAAAAAIAAAAiAAwAAAAAAAIAAAAjAAwAAAAAAAIAAAAkAAwAAAAAAAIAAAAlAAwAAAAAAAIAAAAAAAAAAAAAAAIAAAAAAAEAAAAAAAIAAAAAAAIAAAAAAAIAAAAAAAMAAAAAAAIAAAAAAAQAAAAAAAIAAAAAAAUAAAAAAAIAAAAAAAYAAAAAAAIAAAAAAAcAAAAAAAIAAAAAAAgAAAAAAAIAAAAAAAkAAAAAAAIAAAAAAAoAAAAAAAIAAAAAAAsAAAAAAAIAAAAAAA0AAAAAAAIAAAAAAA4AAAAAAAIAAAAAAA8AAAAAAAIAAAAAABAAAAAAAAIAAAAAABEAAAAAAAIAAAAAABIAAAAAAAIAAAAAABMAAAAAAAIAAAAAABQAAAAAAAIAAAAAABUAAAAAAAIAAAAAABYAAAAAAAIAAAABABYAAAAAAAIAAAACABYAAAAAAAIAAAADABYAAAAAAAIAAAAEABYAAAAAAAIAAAAFABYAAAAAAAIAAAAGABYAAAAAAAIAAAAHABYAAAAAAAIAAAAIABYAAAAAAAIAAAAJABYAAAAAAAIAAAAKABYAAAAAAAIAAAALABYAAAAAAAIAAAAMABYAAAAAAAIAAAANABYAAAAAAAIAAAAOABYAAAAAAAIAAAAPABYAAAAAAAIAAAAQABYAAAAAAAIAAAARABYAAAAAAAIAAAASABYAAAAAAAIAAAATABYAAAAAAAIAAAAUABYAAAAAAAIAAAAVABYAAAAAAAIAAAAWABYAAAAAAAIAAAAXABYAAAAAAAIAAAAYABYAAAAAAAIAAAAZABYAAAAAAAIAAAAaABYAAAAAAAIAAAAbABYAAAAAAAIAAAAcABYAAAAAAAIAAAAdABYAAAAAAAIAAAAeABYAAAAAAAIAAAAfABYAAAAAAAIAAAAgABYAAAAAAAIAAAAhABYAAAAAAAIAAAAiABYAAAAAAAIAAAAjABYAAAAAAAIAAAAkABYAAAAAAAIAAAAlABYAAAAAAAIAAAAlAAAAAAAAAAIAAAAlAAEAAAAAAAIAAAAlAAIAAAAAAAIAAAAlAAMAAAAAAAIAAAAlAAQAAAAAAAIAAAAlAAUAAAAAAAIAAAAlAAYAAAAAAAIAAAAlAAcAAAAAAAIAAAAlAAgAAAAAAAIAAAAlAAkAAAAAAAIAAAAlAAoAAAAAAAIAAAAlAAsAAAAAAAIAAAAlAA0AAAAAAAIAAAAlAA4AAAAAAAIAAAAlAA8AAAAAAAIAAAAlABAAAAAAAAIAAAAlABEAAAAAAAIAAAAlABIAAAAAAAIAAAAlABMAAAAAAAIAAAAlABQAAAAAAAIAAAAlABUAAAAAAAIAAAAQAA0AAAAAAAIAAAAPAA0AAAAAAAIAAAAOAA0AAAAAAAIAAAANAA0AAAAAAAIAAAAMAA0AAAAAAAIAAAALAA0AAAAAAAIAAAAKAA0AAAAAAAIAAAAJAA0AAAAAAAIAAAAIAA0AAAAAAAIAAAAHAA0AAAAAAAIAAAAGAA0AAAAAAAIAAAAFAA0AAAAAAAIAAAAEAA0AAAAAAAIAAAADAA0AAAAAAAIAAAACAA0AAAAAAAIAAAABAA0AAAAAAAIAAAAeAA0AAAAAAAIAAAAfAA0AAAAAAAIAAAAgAA0AAAAAAAIAAAAhAA0AAAAAAAIAAAAiAA0AAAAAAAIAAAAjAA0AAAAAAAIAAAAkAA0AAAAAAAIAAAA=")
+tile_map_data = PackedByteArray("AAAAAAwAAAAAAAIAAAABAAwAAAAAAAIAAAACAAwAAAAAAAIAAAADAAwAAAAAAAIAAAAEAAwAAAAAAAIAAAAFAAwAAAAAAAIAAAAGAAwAAAAAAAIAAAAHAAwAAAAAAAIAAAAIAAwAAAAAAAIAAAAJAAwAAAAAAAIAAAAKAAwAAAAAAAIAAAALAAwAAAAAAAIAAAAMAAwAAAAAAAIAAAANAAwAAAAAAAIAAAAOAAwAAAAAAAIAAAAPAAwAAAAAAAIAAAAQAAwAAAAAAAIAAAAeAAwAAAAAAAIAAAAfAAwAAAAAAAIAAAAgAAwAAAAAAAIAAAAhAAwAAAAAAAIAAAAiAAwAAAAAAAIAAAAjAAwAAAAAAAIAAAAkAAwAAAAAAAIAAAAlAAwAAAAAAAIAAAAAAAAAAAAAAAIAAAAAAAEAAAAAAAIAAAAAAAIAAAAAAAIAAAAAAAMAAAAAAAIAAAAAAAQAAAAAAAIAAAAAAAUAAAAAAAIAAAAAAAYAAAAAAAIAAAAAAAcAAAAAAAIAAAAAAAgAAAAAAAIAAAAAAAkAAAAAAAIAAAAAAAoAAAAAAAIAAAAAAAsAAAAAAAIAAAAAAA0AAAAAAAIAAAAAAA4AAAAAAAIAAAAAAA8AAAAAAAIAAAAAABAAAAAAAAIAAAAAABEAAAAAAAIAAAAAABIAAAAAAAIAAAAAABMAAAAAAAIAAAAAABQAAAAAAAIAAAAAABUAAAAAAAIAAAAAABYAAAAAAAIAAAABABYAAAAAAAIAAAACABYAAAAAAAIAAAADABYAAAAAAAIAAAAEABYAAAAAAAIAAAAFABYAAAAAAAIAAAAGABYAAAAAAAIAAAAHABYAAAAAAAIAAAAIABYAAAAAAAIAAAAJABYAAAAAAAIAAAAKABYAAAAAAAIAAAALABYAAAAAAAIAAAAMABYAAAAAAAIAAAANABYAAAAAAAIAAAAOABYAAAAAAAIAAAAPABYAAAAAAAIAAAAQABYAAAAAAAIAAAARABYAAAAAAAIAAAASABYAAAAAAAIAAAATABYAAAAAAAIAAAAUABYAAAAAAAIAAAAVABYAAAAAAAIAAAAWABYAAAAAAAIAAAAXABYAAAAAAAIAAAAYABYAAAAAAAIAAAAZABYAAAAAAAIAAAAaABYAAAAAAAIAAAAbABYAAAAAAAIAAAAcABYAAAAAAAIAAAAdABYAAAAAAAIAAAAeABYAAAAAAAIAAAAfABYAAAAAAAIAAAAgABYAAAAAAAIAAAAhABYAAAAAAAIAAAAiABYAAAAAAAIAAAAjABYAAAAAAAIAAAAkABYAAAAAAAIAAAAlABYAAAAAAAIAAAAlAAAAAAAAAAIAAAAlAAEAAAAAAAIAAAAlAAIAAAAAAAIAAAAlAAMAAAAAAAIAAAAlAAQAAAAAAAIAAAAlAAUAAAAAAAIAAAAlAAYAAAAAAAIAAAAlAAcAAAAAAAIAAAAlAAgAAAAAAAIAAAAlAAkAAAAAAAIAAAAlAAoAAAAAAAIAAAAlAAsAAAAAAAIAAAAlAA0AAAAAAAIAAAAlAA4AAAAAAAIAAAAlAA8AAAAAAAIAAAAlABAAAAAAAAIAAAAlABEAAAAAAAIAAAAlABIAAAAAAAIAAAAlABMAAAAAAAIAAAAlABQAAAAAAAIAAAAlABUAAAAAAAIAAAAQAA0AAAAAAAIAAAAPAA0AAAAAAAIAAAAOAA0AAAAAAAIAAAANAA0AAAAAAAIAAAAMAA0AAAAAAAIAAAALAA0AAAAAAAIAAAAKAA0AAAAAAAIAAAAJAA0AAAAAAAIAAAAIAA0AAAAAAAIAAAAHAA0AAAAAAAIAAAAGAA0AAAAAAAIAAAAFAA0AAAAAAAIAAAAEAA0AAAAAAAIAAAADAA0AAAAAAAIAAAACAA0AAAAAAAIAAAABAA0AAAAAAAIAAAAeAA0AAAAAAAIAAAAfAA0AAAAAAAIAAAAgAA0AAAAAAAIAAAAhAA0AAAAAAAIAAAAiAA0AAAAAAAIAAAAjAA0AAAAAAAIAAAAkAA0AAAAAAAIAAAARAA0AAAAAAAIAAAARAAwAAAAAAAIAAAARAAYAAAAAAAIAAAARAAIAAAAAAAIAAAARAAEAAAAAAAIAAAARAAAAAAAAAAIAAAAMAAsAAAAAAAIAAAANAAsAAAAAAAIAAAAQAAEAAAAAAAIAAAA=")
 tile_set = ExtResource("1_48asr")
 
 [node name="global_light" type="Node2D" parent="level"]
@@ -235,11 +235,10 @@ shadow_item_cull_mask = 16
 
 [node name="CanvasModulate" type="CanvasModulate" parent="level/global_light"]
 
-[node name="player" parent="." instance=ExtResource("4_h7puh")]
+[node name="player" parent="." groups=["portal_traveller"] instance=ExtResource("4_h7puh")]
 unique_name_in_owner = true
 z_index = 1
 position = Vector2(124.5, 87.25)
-scale = Vector2(0.5, 0.5)
 max_move_speed = 150.0
 move_accel = 150.0
 move_decel = 400.0
@@ -251,7 +250,6 @@ large_jump_force = 300.0
 unique_name_in_owner = true
 position = Vector2(-4, 6.5)
 scale = Vector2(1e-05, 1e-05)
-zoom = Vector2(2, 2)
 limit_smoothed = true
 position_smoothing_enabled = true
 position_smoothing_speed = 4.0
@@ -297,48 +295,30 @@ size = 5
 
 [node name="portalHandler" type="CanvasGroup" parent="."]
 unique_name_in_owner = true
-scale = Vector2(0.5, 0.5)
 script = ExtResource("19_cwr5l")
 
-[node name="orange_portal" type="Area2D" parent="portalHandler"]
+[node name="orange_portal" parent="portalHandler" instance=ExtResource("19_jnghj")]
+unique_name_in_owner = true
+z_index = 10
 position = Vector2(293, 80)
-collision_layer = 2147483648
-collision_mask = 2147483648
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="portalHandler/orange_portal"]
-position = Vector2(4, 0.0625)
-shape = SubResource("RectangleShape2D_cwr5l")
+[node name="blue_portal" parent="portalHandler" instance=ExtResource("19_jnghj")]
+unique_name_in_owner = true
+z_index = 10
+position = Vector2(293, 80)
 
-[node name="ColorRect" type="ColorRect" parent="portalHandler/orange_portal"]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_top = -16.0
-offset_right = 8.0
-offset_bottom = 16.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(1, 0, 0, 1)
-
-[node name="grid_aligned" type="ColorRect" parent="portalHandler/orange_portal"]
-editor_description = "tilemap aligned position, used for positioning"
-offset_top = -8.0
-offset_right = 16.0
-offset_bottom = 8.0
-color = Color(1, 1, 1, 0.5)
-
-[node name="blue_portal" type="Area2D" parent="portalHandler"]
+[node name="blue_portal_old" type="Area2D" parent="portalHandler"]
+visible = false
+z_index = 10
 position = Vector2(293, 114)
 collision_layer = 2147483648
 collision_mask = 2147483648
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="portalHandler/blue_portal"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="portalHandler/blue_portal_old"]
 position = Vector2(4, 0.0625)
 shape = SubResource("RectangleShape2D_cwr5l")
 
-[node name="ColorRect" type="ColorRect" parent="portalHandler/blue_portal"]
+[node name="ColorRect" type="ColorRect" parent="portalHandler/blue_portal_old"]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -351,12 +331,19 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 1, 1)
 
-[node name="grid_aligned" type="ColorRect" parent="portalHandler/blue_portal"]
+[node name="grid_aligned" type="ColorRect" parent="portalHandler/blue_portal_old"]
 editor_description = "tilemap aligned position, used for positioning"
 offset_top = -8.0
 offset_right = 16.0
 offset_bottom = 8.0
 color = Color(1, 1, 1, 0.5)
+
+[node name="travellers_container" type="ColorRect" parent="portalHandler/blue_portal_old"]
+clip_children = 1
+z_index = 1
+offset_top = -16.0
+offset_right = 40.0
+offset_bottom = 16.0
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="."]
 visible = false

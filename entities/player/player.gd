@@ -226,7 +226,7 @@ func update_sprite():
 			else:
 				player_sprite.play("idle" if !is_holding else "hold")
 	if is_jumping:
-		print(player_sprite.animation, player_sprite.animation_finished)
+		
 		#if player_sprite.animation
 		player_sprite.play("jump")
 		
@@ -240,8 +240,6 @@ func update_sprite():
 	
 func update_attach_point():
 #	mirror the position of attach point if flipped
-	#print("position before ", attach_point.position)
-	#var distance = attach_point.position.x - player_sprite.position.x
 	attach_point.position = _original_attach_point_position
 #
 	var offset = player_sprite.get_head_pixel()
